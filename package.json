@@ -1,0 +1,31 @@
+{
+  "name": "ahj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "server": "nodemon server.js",
+    "watch": "nodemon -w server.js"
+  },
+  "author": "coursar",
+  "license": "ISC",
+  "dependencies": {
+    "@fractalsoftware/random-avatar-generator": "^1.0.6",
+    "facesjs": "^3.4.0",
+    "faker": "^5.5.3",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa-slow": "^2.1.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "random-text-generator": "^3.2.1",
+    "uuid": "^8.3.2"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
