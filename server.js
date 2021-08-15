@@ -65,7 +65,9 @@ app.use(async (ctx, next) => {
 
 
 
-
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 
 
 //задача 12.3 из AHJ WORKERS
@@ -73,6 +75,7 @@ const slow = require('koa-slow');
 /*app.use(slow({
   delay: 5000
 }));*/
+
 
 const data = [
   {
@@ -93,13 +96,41 @@ const data = [
 ]
 
 router.get('/data', async (ctx, next) => {
+  const random = getRandomInt(4);
+  const data = [
+    {
+      name: faker.fake("{{name.firstName}}"),
+      description: faker.lorem.text(),
+      genre: faker.music.genre()
+    },
+    {
+      name: faker.fake("{{name.firstName}}"),
+      description: faker.lorem.text(),
+      genre: faker.music.genre()
+    },
+    {
+      name: faker.fake("{{name.firstName}}"),
+      description: faker.lorem.text(),
+      genre: faker.music.genre()
+    }
+  ]
+
+
+  console.log(random)
+  if (random < 2) {
+    //ctx.throw(400, 'name required');
+    app.use(async (ctx, next) => {
+      
+      ctx.throw(404,'Errrrrrror Message');
+    });
+    return
+  }
   
   ctx.response.body = data;
 });
 
 
-
 app.use(router.routes()).use(router.allowedMethods());
 
-const port = process.env.PORT || 7070;
+const port = process.env.PORT || 7080;
 const server = http.createServer(app.callback()).listen(port);
